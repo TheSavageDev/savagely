@@ -1,17 +1,10 @@
 {
   "compilerOptions": {
-    "noEmit": true,
-    "allowJs": true,
-    "esModuleInterop": true,
-    "target": "esnext",
-    "module": "esnext",
-    "moduleResolution": "node",
-    "baseUrl": "./",
+    "baseUrl": ".",
     "paths": {
       "src/*": ["./src/*"]
     },
-    "typeRoots": ["../node_modules/@types", "../.redwood"],
-    "types": ["jest"]
+    "jsx": "preserve"
   },
-  "include": ["src"]
+  "include": ["src/**/*", "../.redwood/index.d.ts"]
 }

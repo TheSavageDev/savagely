@@ -8,14 +8,6 @@ generator client {
   binaryTargets = "native"
 }
 
-model Post {
-  id Int @id @default(autoincrement())
-  title String
-  body String
-  comments Comment[]
-  createdAt DateTime @default(now())
-}
-
 model Contact {
   id Int @id @default(autoincrement())
   name String
@@ -24,12 +16,54 @@ model Contact {
   createdAt DateTime @default(now())
 }
 
-
-model Comment {
+model Exercise {
   id Int @id @default(autoincrement())
   name String
-  body String
-  post Post @relation(fields: [postId], references: [id])
-  postId Int
-  createdAt DateTime @default(now())
+  instructions String
+  workout Workout @relation(fields: [workoutId], references: [id])
+  workoutId Int
+  reps Int?
+  sets Int?
+  weight Int?
+  minutes Int?
+  level String
+  equipment String
+  abs Boolean?
+  arms Boolean?
+  back Boolean?
+  chest Boolean?
+  legs Boolean?
+  shoulders Boolean?
+}
+
+model Workout {
+  id Int @id @default(autoincrement())
+  exercises Exercise[]
+  title String
+}
+
+model Account {
+  id String @id @default(uuid())
+  name String
+  balance Float
+  credits Credit[]
+  debits Debit[]
+}
+
+model Credit {
+  id Int @id @default(autoincrement())
+  amount Float
+  notes String
+  date DateTime @default(now())
+  account Account @relation(fields: [accountId], references: [id])
+  accountId String
+}
+
+model Debit {
+  id Int @id @default(autoincrement())
+  amount Float
+  notes String
+  date DateTime @default(now())
+  account Account @relation(fields: [accountId], references: [id])
+  accountId String
 }

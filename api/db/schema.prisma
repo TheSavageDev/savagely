@@ -45,7 +45,8 @@ model Workout {
 model Account {
   id String @id @default(uuid())
   name String
-  balance Float
+  number Int
+  balance Float?
   credits Credit[]
   debits Debit[]
 }

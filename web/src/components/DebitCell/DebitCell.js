@@ -43,7 +43,7 @@ export const Success = ({ debit }) => {
       >
         Delete
       </button>
-      ---------
+      <hr className="border-gray-200" />
     </section>
   )
 }

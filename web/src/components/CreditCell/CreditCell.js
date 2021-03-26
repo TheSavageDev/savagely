@@ -42,6 +42,7 @@ export const Success = ({ credit }) => {
       >
         Delete
       </button>
+      <hr className="border-gray-200" />
     </section>
   )
 }

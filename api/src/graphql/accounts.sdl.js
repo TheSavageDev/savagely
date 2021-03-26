@@ -1,6 +1,7 @@
 export const schema = gql`
   type Account {
     id: String!
+    number: Int!
     name: String!
     balance: Float!
     credits: [Credit]!
@@ -14,11 +15,13 @@ export const schema = gql`
 
   input CreateAccountInput {
     name: String!
-    balance: Float!
+    number: Int!
+    balance: Float
   }
 
   input UpdateAccountInput {
     name: String
+    number: Int!
     balance: Float
   }
 

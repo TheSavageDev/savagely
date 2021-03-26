@@ -1,13 +1,14 @@
-import { Label, Form, FormError, Submit, TextField } from '@redwoodjs/forms'
+import { Form, FormError } from '@redwoodjs/forms'
 import { Toaster, toast } from '@redwoodjs/web/toast'
 import { useForm } from 'react-hook-form'
 import { useMutation } from '@redwoodjs/web'
 import MainLayout from 'src/layouts/MainLayout/MainLayout'
-import { CSS } from './styles'
 import { toastOptions } from 'src/constants'
 import WorkoutsCell, {
   QUERY as WorkoutsQuery,
 } from 'src/components/WorkoutsCell/WorkoutsCell'
+import InputField from 'src/components/InputField/InputField'
+import SubmitButton from 'src/components/SubmitButton/SubmitButton'
 
 const CREATE_WORKOUT = gql`
   mutation CreateWorkoutMutation($input: CreateWorkoutInput!) {
@@ -19,7 +20,7 @@ const CREATE_WORKOUT = gql`
 
 const WorkoutsPage = () => {
   const formMethods = useForm({ mode: 'onBlur' })
-  const [create, { loading, error }] = useMutation(CREATE_WORKOUT, {
+  const [create, { error }] = useMutation(CREATE_WORKOUT, {
     onCompleted: () => {
       toast.success('Workout Saved. Get Ready for the pain!')
       formMethods.reset()
@@ -39,12 +40,12 @@ const WorkoutsPage = () => {
         toastOptions={toastOptions}
       />
       <section className="flex justify-between">
-        <section className={CSS.mainSection}>
-          <h2 className={CSS.heading}>Workout List</h2>
+        <section className="w-1/3 mx-auto mt-12 p-6 text-gray-200 rounded-xl ring ring-gray-700">
+          <h2 className="text-3xl">Workout List</h2>
           <WorkoutsCell />
         </section>
-        <section className={CSS.mainSection}>
-          <h1 className={CSS.heading}>Create a Workout</h1>
+        <section className="w-1/3 mx-auto mt-12 p-6 text-gray-200 rounded-xl ring ring-gray-700">
+          <h1 className="text-3xl">Create a Workout</h1>
           <Form
             validation={{ mode: 'onBlur' }}
             onSubmit={onSubmit}
@@ -56,21 +57,9 @@ const WorkoutsPage = () => {
               listClassName="list-disc ml-4"
               listItemClassName=""
             />
-            <h2 className={CSS.exerciseFormHeading}>Create Exercise</h2>
-            <section className={CSS.exerciseForm}>
-              <section className={CSS.section}>
-                <Label name="title" className={CSS.label} />
-                <TextField
-                  name="title"
-                  type="text"
-                  className={CSS.inputField}
-                  required
-                />
-              </section>
-            </section>
-            <Submit disabled={loading} className={CSS.generateButton}>
-              Start Building
-            </Submit>
+            <h2 className="text-2xl mb-4">Create Exercise</h2>
+            <InputField name="title" type="text" />
+            <SubmitButton text="Start Building" />
           </Form>
         </section>
       </section>

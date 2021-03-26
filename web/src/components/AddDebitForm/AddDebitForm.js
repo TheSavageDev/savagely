@@ -1,18 +1,9 @@
-import {
-  Form,
-  FormError,
-  FieldError,
-  Label,
-  Submit,
-  TextField,
-  TextAreaField,
-  DateField,
-} from '@redwoodjs/forms'
+import { Form, FormError, Submit } from '@redwoodjs/forms'
 import { useMutation } from '@redwoodjs/web'
 import { useForm } from 'react-hook-form'
 import { toast } from '@redwoodjs/web/toast'
 import { QUERY as DebitsQuery } from 'src/components/DebitsCell'
-import { CSS } from './styles'
+import InputField from 'src/components/InputField'
 
 const CREATE_DEBIT = gql`
   mutation CreateDebitMutation($input: CreateDebitInput!) {
@@ -22,48 +13,6 @@ const CREATE_DEBIT = gql`
     }
   }
 `
-
-const InputField = ({ name, type, required }) => {
-  return (
-    <article className={CSS.input}>
-      <Label
-        name={name}
-        className={CSS.label}
-        errorClassName={CSS.labelError}
-      />
-      {type === 'text' ? (
-        <TextField
-          name={name}
-          validation={{ required }}
-          className={CSS.inputField}
-          errorClassName={CSS.fieldError}
-        />
-      ) : type === 'area' ? (
-        <TextAreaField
-          name={name}
-          validation={{ required }}
-          className={CSS.textAreaField}
-        />
-      ) : type === 'date' ? (
-        <DateField
-          name={name}
-          validation={{ required }}
-          className={CSS.inputField}
-          errorClassName={CSS.fieldError}
-        />
-      ) : (
-        <TextField
-          name={name}
-          validation={{ required }}
-          className={CSS.inputField}
-          errorClassName={CSS.fieldError}
-          transformValue={(str) => parseFloat(str.replace(/,/g, ''), 10)}
-        />
-      )}
-      <FieldError name={name} className={CSS.fieldErrorText} />
-    </article>
-  )
-}
 
 const AddDebitForm = ({ accountId }) => {
   const formMethods = useForm({ mode: 'onBlur' })
@@ -83,16 +32,21 @@ const AddDebitForm = ({ accountId }) => {
       validation={{ mode: 'onBlur' }}
       onSubmit={onSubmit}
       formMethods={formMethods}
+      className="flex justify-center flex-col p-5"
     >
       <FormError
         error={error}
         wrapperClassName="py-4 px-6 rounded-lg bg-red-100 text-red-700"
         listClassName="list-disc ml-4"
       />
-      <InputField name="amount" type="number" required />
-      <InputField name="date" type="date" required />
+      <article className="flex justify-between">
+        <InputField name="amount" type="number" required />
+        <InputField name="date" type="date" required />
+      </article>
       <InputField name="notes" type="area" required />
-      <Submit>Add Debit</Submit>
+      <Submit className="block bg-gray-200 hover:bg-gray-800 text-gray-800 hover:text-gray-200 uppercase text-lg mx-auto py-1 rounded w-full">
+        Add Debit
+      </Submit>
     </Form>
   )
 }

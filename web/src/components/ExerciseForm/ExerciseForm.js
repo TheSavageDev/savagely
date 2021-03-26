@@ -1,20 +1,12 @@
-import {
-  Form,
-  FormError,
-  FieldError,
-  Label,
-  CheckboxField,
-  Submit,
-  SelectField,
-  NumberField,
-  TextField,
-  TextAreaField,
-} from '@redwoodjs/forms'
+import { Form, FormError } from '@redwoodjs/forms'
 import { toast } from '@redwoodjs/web/toast'
 import { useForm } from 'react-hook-form'
 import { useMutation } from '@redwoodjs/web'
 import { QUERY as ExercisesQuery } from 'src/components/ExercisesCell'
-import { CSS } from './styles'
+import InputField from 'src/components/InputField'
+import Select from 'src/components/Select'
+import Checkbox from 'src/components/Checkbox'
+import SubmitButton from 'src/components/SubmitButton'
 
 const CREATE_EXERCISE = gql`
   mutation CreateExerciseMutation($input: CreateExerciseInput!) {
@@ -37,68 +29,6 @@ const CREATE_EXERCISE = gql`
     }
   }
 `
-
-const Checkbox = ({ name }) => {
-  return (
-    <article className={CSS.checkbox}>
-      <CheckboxField name={name} />
-      <Label name={name} className={CSS.checkboxLabel} />
-    </article>
-  )
-}
-
-const Select = ({ title, name, options = [] }) => {
-  return (
-    <article className={CSS.input}>
-      <Label className={CSS.label}>{title}</Label>
-      <SelectField
-        name={name}
-        className={CSS.selectField}
-        errorClassName={CSS.selectFieldError}
-        validation={{ required: true }}
-      >
-        {options.map((option) => (
-          <option key={option}>{option}</option>
-        ))}
-      </SelectField>
-      <FieldError name={name} className={CSS.fieldErrorText} />
-    </article>
-  )
-}
-
-const InputField = ({ name, type, required }) => {
-  return (
-    <article className={CSS.input}>
-      <Label
-        name={name}
-        className={CSS.label}
-        errorClassName={CSS.labelError}
-      />
-      {type === 'text' ? (
-        <TextField
-          name={name}
-          validation={{ required }}
-          className={CSS.inputField}
-          errorClassName={CSS.fieldError}
-        />
-      ) : type === 'area' ? (
-        <TextAreaField
-          name="instructions"
-          type="area"
-          className={CSS.textAreaField}
-        />
-      ) : (
-        <NumberField
-          name={name}
-          validation={{ required }}
-          className={CSS.inputField}
-          errorClassName={CSS.fieldError}
-        />
-      )}
-      <FieldError name={name} className={CSS.fieldErrorText} />
-    </article>
-  )
-}
 
 const ExerciseForm = ({ workoutId }) => {
   const formMethods = useForm({ mode: 'onBlur' })
@@ -125,9 +55,9 @@ const ExerciseForm = ({ workoutId }) => {
         listClassName="list-disc ml-4"
         listItemClassName=""
       />
-      <h2 className={CSS.exerciseFormHeading}>Create Exercise</h2>
-      <section className={CSS.exerciseForm}>
-        <section className={CSS.section}>
+      <h2 className="text-2xl">Create Exercise</h2>
+      <section className="flex justify-between mt-2">
+        <section className="mx-2">
           <InputField name="name" type="text" required />
           <InputField name="minutes" type="number" />
           <InputField name="sets" type="number" />
@@ -135,7 +65,7 @@ const ExerciseForm = ({ workoutId }) => {
           <InputField name="weight" type="number" />
           <InputField name="instructions" type="area" />
         </section>
-        <section className={CSS.section}>
+        <section className="mx-2">
           <Select
             title="Difficulty Level"
             name="level"
@@ -146,7 +76,9 @@ const ExerciseForm = ({ workoutId }) => {
             name="equipment"
             options={['Body Weight', 'Free Weights', 'Gym']}
           />
-          <h2 className={CSS.sectionHeading}>Muscle Group(s)</h2>
+        </section>
+        <section className="mx-2">
+          <h2 className="text-xl mb-2">Muscle Group(s)</h2>
           <Checkbox label="Abs" name="abs" />
           <Checkbox label="Arms" name="arms" />
           <Checkbox label="Back" name="back" />
@@ -155,9 +87,7 @@ const ExerciseForm = ({ workoutId }) => {
           <Checkbox label="Shoulders" name="shoulders" />
         </section>
       </section>
-      <Submit disabled={loading} className={CSS.generateButton}>
-        Save Exercise
-      </Submit>
+      <SubmitButton disabled={loading} text="Save Exercise" />
     </Form>
   )
 }

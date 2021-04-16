@@ -8,10 +8,10 @@ import {
 
 const CSS = {
   inputField: 'flex flex-col my-2',
-  label: 'text-gray-200 capitalize text-lg',
+  label: 'text-gold capitalize text-2xl font-bold',
   labelError: 'block text-red-500 text-xl capitalize',
-  input: 'transition-all rounded-lg text-gray-200 bg-gray-800 p-2 mx-2',
-  fieldErrorText: 'block text-red-500 capitalize',
+  input: 'transition-all rounded-2xl text-black bg-white p-2 mx-2 shadow-inner',
+  fieldErrorText: 'block text-red capitalize',
 }
 
 const InputField = ({ name, type, required }) => {

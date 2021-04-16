@@ -39,64 +39,74 @@ export const Success = ({ accounts }) => {
   return (
     <section className="flex justify-evenly w-full">
       <article className="mx-5">
-        <h2 className="text-3xl mb-2">Assets</h2>
-        {assets.map((account) => (
-          <Link
-            key={account.id}
-            to={routes.account({ id: account.id })}
-            className="block pl-2"
-          >
-            {account.name}
-          </Link>
-        ))}
+        <h2 className="text-3xl mb-2 text-green-500">Assets</h2>
+        <ul className="list-disc ml-4">
+          {assets.map((account) => (
+            <Link
+              key={account.id}
+              to={routes.account({ id: account.id })}
+              className="block pl-2"
+            >
+              <li>{account.name}</li>
+            </Link>
+          ))}
+        </ul>
       </article>
       <article className="mx-3">
-        <h2 className="text-3xl mb-2">Liabilities</h2>
-        {liabilities.map((account) => (
-          <Link
-            key={account.id}
-            to={routes.account({ id: account.id })}
-            className="block pl-2"
-          >
-            {account.name}
-          </Link>
-        ))}
+        <h2 className="text-3xl mb-2 text-green-500">Liabilities</h2>
+        <ul className="list-disc ml-4">
+          {liabilities.map((account) => (
+            <Link
+              key={account.id}
+              to={routes.account({ id: account.id })}
+              className="block pl-2"
+            >
+              <li>{account.name}</li>
+            </Link>
+          ))}
+        </ul>
       </article>
       <article className="mx-3">
-        <h2 className="text-3xl mb-2">Equity</h2>
-        {equity.map((account) => (
-          <Link
-            key={account.id}
-            to={routes.account({ id: account.id })}
-            className="block pl-2"
-          >
-            {account.name}
-          </Link>
-        ))}
+        <h2 className="text-3xl mb-2 text-green-500">Equity</h2>
+        <ul className="list-disc ml-4">
+          {equity.map((account) => (
+            <Link
+              key={account.id}
+              to={routes.account({ id: account.id })}
+              className="block pl-2"
+            >
+              <li>{account.name}</li>
+            </Link>
+          ))}
+        </ul>
       </article>
       <article className="mx-3">
-        <h2 className="text-3xl mb-2">Revenues</h2>
-        {revenues.map((account) => (
-          <Link
-            key={account.id}
-            to={routes.account({ id: account.id })}
-            className="block pl-2"
-          >
-            {account.name}
-          </Link>
-        ))}
+        <h2 className="text-3xl mb-2 text-green-500">Revenues</h2>
+        <ul className="list-disc ml-4">
+          {revenues.map((account) => (
+            <Link
+              key={account.id}
+              to={routes.account({ id: account.id })}
+              className="block pl-2"
+            >
+              <li>{account.name}</li>
+            </Link>
+          ))}
+        </ul>
       </article>
       <article className="mx-3">
-        <h2 className="text-3xl mb-2">Expenses</h2>
-        {expenses.map((account) => (
-          <Link
-            key={account.id}
-            to={routes.account({ id: account.id })}
-            className="block pl-2"
-          >
-            {account.name}
-          </Link>
-        ))}
+        <h2 className="text-3xl mb-2 text-green-500">Expenses</h2>
+        <ul className="list-disc ml-4">
+          {expenses.map((account) => (
+            <Link
+              key={account.id}
+              to={routes.account({ id: account.id })}
+              className="block pl-2"
+            >
+              <li>{account.name}</li>
+            </Link>
+          ))}
+        </ul>
       </article>
     </section>
   )

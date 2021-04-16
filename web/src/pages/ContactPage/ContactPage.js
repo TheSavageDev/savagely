@@ -28,7 +28,7 @@ const ContactPage = () => {
   }
   return (
     <MainLayout>
-      <section className="w-1/3 mx-auto mt-12 p-6 text-gray-200 rounded-xl ring ring-yellow-600">
+      <section className="w-1/3 mx-auto mt-12 p-6 text-white rounded-xl shadow-2xl bg-white bg-opacity-5">
         <h2 className="text-4xl">Don&apos;t Contact me, Bro</h2>
         <Toaster
           timeout={2000}
@@ -37,15 +37,15 @@ const ContactPage = () => {
           toastOptions={{
             style: {
               margin: '1rem',
-              background: 'green',
-              color: '#fff',
+              background: '#606C38',
+              color: '#fefae0',
               zIndex: 1,
             },
             duration: 5000,
             success: {
               duration: 5000,
               theme: {
-                primary: 'green',
+                primary: '#606C38',
                 secondary: 'black',
               },
             },

@@ -3,12 +3,9 @@ export const QUERY = gql`
     exercises(workoutId: $workoutId) {
       id
       name
-      minutes
       reps
       sets
-      level
       equipment
-      instructions
       weight
       abs
       arms
@@ -32,15 +29,10 @@ export const Success = ({ exercises }) => {
     <div key={exercise.id}>
       <h2 className="text-xl">{exercise.name}</h2>
       <article className="pl-4">
-        {exercise.minutes ? (
-          <time>{exercise.minutes} minute(s)</time>
-        ) : (
-          <article>
-            <p>{exercise.sets} sets</p>
-            <p>{exercise.reps} reps</p>
-          </article>
-        )}
-        <p>Level: {exercise.level || 'None'}</p>
+        <article>
+          <p>{exercise.sets} sets</p>
+          <p>{exercise.reps} reps</p>
+        </article>
         <p>Equipment: {exercise.equipment || 'None'}</p>
         <p>Weight: {exercise.weight ? `${exercise.weight} lbs` : 'None'}</p>
         <h3 className="text-lg">Muscle Group(s)</h3>
@@ -52,8 +44,6 @@ export const Success = ({ exercises }) => {
           <li className="pl-4">{exercise.legs ? 'Legs' : null}</li>
           <li className="pl-4">{exercise.shoulders ? 'Shoulders' : null}</li>
         </ul>
-        <h3>Instructions</h3>
-        <p>{exercise.instructions}</p>
       </article>
       --------
     </div>

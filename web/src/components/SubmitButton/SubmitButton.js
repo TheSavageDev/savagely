@@ -1,8 +1,11 @@
 import { Submit } from '@redwoodjs/forms'
 
-const SubmitButton = ({ text }) => {
+const SubmitButton = ({ text, disabled }) => {
   return (
-    <Submit className="block bg-gray-200 hover:bg-gray-800 text-gray-800 hover:text-gray-200 uppercase text-lg mx-auto py-1 rounded w-full">
+    <Submit
+      disabled={disabled}
+      className="block bg-gold hover:bg-green text-white uppercase text-lg mx-auto p-1 rounded-2xl w-full shadow-2xl"
+    >
       {text}
     </Submit>
   )

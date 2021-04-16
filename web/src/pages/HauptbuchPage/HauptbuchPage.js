@@ -46,26 +46,28 @@ const HauptbuchPage = () => {
         reverseOrder={false}
         toastOptions={toastOptions}
       />
-      <section className="bg-red-300 text-red-900 text-4xl mx-auto text-center rounded-xl mt-2 py-5">
-        Work In Progress
+      <section className="bg-red-300 mx-auto text-center rounded-xl mt-2 w-1/4">
+        <h2 className="text-red-900 text-4xl py-2">Work In Progress</h2>
       </section>
-      <section className="flex justify-around mt-12 mb-4">
-        <section className="flex flex-col justify-center items-center p-6 text-gray-200 rounded-xl ring ring-yellow-600">
-          <h2 className="text-4xl mb-2">Accounts</h2>
-          <AccountsCell />
+      <section className="flex justify-center mt-4 mb-4 mx-auto w-3/4">
+        <section className="flex justify-around">
+          <section className="flex flex-col justify-start items-center p-6 text-white rounded-xl shadow-2xl bg-white bg-opacity-5">
+            <h2 className="text-4xl mb-2">Accounts</h2>
+            <AccountsCell />
+          </section>
         </section>
+        <Form
+          className="w-1/6 mx-auto flex flex-col p-6 rounded-xl shadow-2xl bg-white bg-opacity-5"
+          onSubmit={onSubmit}
+          formMethods={formMethods}
+          validation={{ mode: 'onBlur' }}
+        >
+          <InputField name="name" type="text" required />
+          <InputField name="number" type="number" required />
+          <InputField name="balance" type="number" />
+          <SubmitButton text="Add Account" />
+        </Form>
       </section>
-      <Form
-        className="w-1/4 mx-auto flex flex-col"
-        onSubmit={onSubmit}
-        formMethods={formMethods}
-        validation={{ mode: 'onBlur' }}
-      >
-        <InputField name="name" type="text" required />
-        <InputField name="number" type="number" required />
-        <InputField name="balance" type="number" />
-        <SubmitButton text="Add Account" />
-      </Form>
     </MainLayout>
   )
 }

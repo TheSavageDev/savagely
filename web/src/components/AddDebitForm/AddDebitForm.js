@@ -1,9 +1,10 @@
-import { Form, FormError, Submit } from '@redwoodjs/forms'
+import { Form, FormError } from '@redwoodjs/forms'
 import { useMutation } from '@redwoodjs/web'
 import { useForm } from 'react-hook-form'
 import { toast } from '@redwoodjs/web/toast'
 import { QUERY as DebitsQuery } from 'src/components/DebitsCell'
 import InputField from 'src/components/InputField'
+import SubmitButton from '../SubmitButton/SubmitButton'
 
 const CREATE_DEBIT = gql`
   mutation CreateDebitMutation($input: CreateDebitInput!) {
@@ -44,9 +45,7 @@ const AddDebitForm = ({ accountId }) => {
         <InputField name="date" type="date" required />
       </article>
       <InputField name="notes" type="area" required />
-      <Submit className="block bg-gray-200 hover:bg-gray-800 text-gray-800 hover:text-gray-200 uppercase text-lg mx-auto py-1 rounded w-full">
-        Add Debit
-      </Submit>
+      <SubmitButton text="Add Debit" />
     </Form>
   )
 }

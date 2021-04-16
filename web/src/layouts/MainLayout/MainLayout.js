@@ -19,8 +19,20 @@ const navRoutes = [
     name: 'Hauptbuch',
   },
   {
-    route: routes.hauptbuch(),
-    name: 'Something',
+    route: routes.hangman(),
+    name: 'Hangman',
+  },
+  {
+    route: routes.standUp(),
+    name: 'Stand-Up',
+  },
+  {
+    route: routes.retroactive(),
+    name: 'Retroactive',
+  },
+  {
+    route: routes.estimation(),
+    name: 'Estimation',
   },
 ]
 

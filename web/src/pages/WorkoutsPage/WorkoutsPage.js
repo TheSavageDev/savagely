@@ -40,11 +40,11 @@ const WorkoutsPage = () => {
         toastOptions={toastOptions}
       />
       <section className="flex justify-between">
-        <section className="w-1/3 mx-auto mt-12 p-6 text-gray-200 rounded-xl ring ring-gray-700">
+        <section className="w-1/3 mx-auto mt-12 p-6 text-white rounded-2xl shadow-2xl bg-white bg-opacity-5">
           <h2 className="text-3xl">Workout List</h2>
           <WorkoutsCell />
         </section>
-        <section className="w-1/3 mx-auto mt-12 p-6 text-gray-200 rounded-xl ring ring-gray-700">
+        <section className="w-1/3 mx-auto mt-12 p-6 text-white rounded-2xl shadow-2xl bg-white bg-opacity-5">
           <h1 className="text-3xl">Create a Workout</h1>
           <Form
             validation={{ mode: 'onBlur' }}

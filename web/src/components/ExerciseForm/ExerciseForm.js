@@ -5,7 +5,6 @@ import { useMutation } from '@redwoodjs/web'
 import { QUERY as ExercisesQuery } from 'src/components/ExercisesCell'
 import InputField from 'src/components/InputField'
 import Select from 'src/components/Select'
-import Checkbox from 'src/components/Checkbox'
 import SubmitButton from 'src/components/SubmitButton'
 
 const CREATE_EXERCISE = gql`
@@ -13,12 +12,9 @@ const CREATE_EXERCISE = gql`
     createExercise(input: $input) {
       id
       name
-      instructions
       reps
       sets
       weight
-      minutes
-      level
       equipment
       abs
       arms
@@ -30,7 +26,7 @@ const CREATE_EXERCISE = gql`
   }
 `
 
-const ExerciseForm = ({ workoutId }) => {
+const ExerciseForm = ({ workoutId, group, setOpenModal }) => {
   const formMethods = useForm({ mode: 'onBlur' })
   const [createExercise, { loading, error }] = useMutation(CREATE_EXERCISE, {
     onCompleted: () => {
@@ -48,6 +44,7 @@ const ExerciseForm = ({ workoutId }) => {
       validation={{ mode: 'onBlur' }}
       onSubmit={onSubmit}
       formMethods={formMethods}
+      className="relative"
     >
       <FormError
         error={error || error}
@@ -55,36 +52,25 @@ const ExerciseForm = ({ workoutId }) => {
         listClassName="list-disc ml-4"
         listItemClassName=""
       />
-      <h2 className="text-2xl">Create Exercise</h2>
+      <button
+        onClick={() => setOpenModal({ isOpen: false, group: '' })}
+        className="absolute top-0 right-0 bg-red-500 text-xs rounded text-white px-2 py-1"
+      >
+        X
+      </button>
+      <h2 className="text-2xl">Create Exercise -- {group}</h2>
       <section className="flex justify-between mt-2">
         <section className="mx-2">
-          <InputField name="name" type="text" required />
-          <InputField name="minutes" type="number" />
           <InputField name="sets" type="number" />
           <InputField name="reps" type="number" />
-          <InputField name="weight" type="number" />
-          <InputField name="instructions" type="area" />
         </section>
         <section className="mx-2">
-          <Select
-            title="Difficulty Level"
-            name="level"
-            options={['Beginner', 'Intermediate', 'Advanced']}
-          />
+          <InputField name="weight" type="number" />
           <Select
             title="Equipment"
             name="equipment"
             options={['Body Weight', 'Free Weights', 'Gym']}
           />
-        </section>
-        <section className="mx-2">
-          <h2 className="text-xl mb-2">Muscle Group(s)</h2>
-          <Checkbox label="Abs" name="abs" />
-          <Checkbox label="Arms" name="arms" />
-          <Checkbox label="Back" name="back" />
-          <Checkbox label="Chest" name="chest" />
-          <Checkbox label="Legs" name="legs" />
-          <Checkbox label="Shoulders" name="shoulders" />
         </section>
       </section>
       <SubmitButton disabled={loading} text="Save Exercise" />

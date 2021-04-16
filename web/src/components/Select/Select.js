@@ -2,9 +2,9 @@ import { Label, SelectField, FieldError } from '@redwoodjs/forms'
 
 const CSS = {
   input: 'flex flex-col mb-5',
-  label: 'text-gray-200 capitalize text-lg m-0',
+  label: 'text-gold font-semibold capitalize text-xl m-0',
   labelError: 'block text-red-500 text-xl capitalize',
-  select: 'transition-all rounded-lg text-gray-200 bg-gray-800 p-2 mx-2',
+  select: 'transition-all rounded-lg text-white bg-green p-2 mx-2',
   fieldErrorText: 'block text-red-500 capitalize',
 }
 

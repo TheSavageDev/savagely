@@ -2,8 +2,8 @@ import { Link, routes } from '@redwoodjs/router'
 import { useAuth } from '@redwoodjs/auth'
 
 const CSS = {
-  navItem: 'py-2 px-4 hover:text-gold transition-all duration-300 rounded',
-  authButton: 'py-2 px-4 hover:text-red-500 transition duration-300 rounded',
+  navItem: 'py-2 px-4 hover:text-gold transition-all duration-300',
+  authButton: 'py-2 px-4 hover:text-red-500 transition duration-300 font-bold',
   header:
     'relative flex justify-between items-center py-4 px-8 shadow-2xl bg-gradient-to-l from-gray-900 to-black text-gray-200 font-bold',
   logo: 'text-5xl font-bold tracking-tight',
@@ -27,9 +27,9 @@ const LogInLogOutButton = ({ isAuthenticated, logOut, logIn }) => {
 
   return (
     <li>
-      <a className={CSS.authButton} href="#" onClick={handleLogInLogOut}>
+      <button className={CSS.authButton} href="#" onClick={handleLogInLogOut}>
         {isAuthenticated ? 'Log Out' : 'Log In'}
-      </a>
+      </button>
     </li>
   )
 }

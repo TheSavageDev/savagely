@@ -4,7 +4,7 @@ const SubmitButton = ({ text, disabled }) => {
   return (
     <Submit
       disabled={disabled}
-      className="block bg-gold hover:bg-green text-white uppercase text-lg mx-auto p-1 rounded-2xl w-full shadow-2xl"
+      className="block bg-gold hover:bg-transparent border border-white text-white uppercase text-lg mx-auto p-1 rounded-2xl w-full shadow-2xl"
     >
       {text}
     </Submit>

@@ -9,7 +9,7 @@ import {
 const CSS = {
   inputField: 'flex flex-col my-2',
   label: 'text-gold capitalize text-2xl font-bold',
-  labelError: 'block text-red-500 text-xl capitalize',
+  labelError: 'text-red-500 capitalize text-2xl font-bold',
   input: 'transition-all rounded-2xl text-black bg-white p-2 mx-2 shadow-inner',
   fieldErrorText: 'block text-red capitalize',
 }
